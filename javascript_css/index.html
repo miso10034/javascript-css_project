@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Vermont</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    
+    <section>
+        <div class="circle"></div>
+        <header>
+            <a href="#"><img src="img/logo.png" class="logo"></a>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="https://www.idus.com/w/artist/f4e98387-315d-4889-9a73-1664a5ee05bf/product">Shop</a></li>
+                <li><a href="https://www.idus.com/w/artist/f4e98387-315d-4889-9a73-1664a5ee05bf/story">News</a></li>
+                <li><a href="http://192.168.0.25/main.html">Login</a></li>
+            </ul>
+        </header>
+        <div class="content">
+            <div class="textBox">
+                <h2>It's not just Candy<br>It's <span>Spring Vermont</span></h2>
+                <p>수리산에서 온 벌꿀은
+                    주변 농경지가 없는 깊은 수리산의 산속
+                    청정지역에서 자연숙성 되어 채밀되는 귀한 꿀입니다.<p></p>
+                    수리산의 꿀과 목 건강에 도움이 되는 자연재료를 함께 블렌딩 해 목을 위한 캔디, ‘목캔디’를 만들었습니다.<p></p>
+                    </p>
+                <a href="#">Learn More</a>
+            </div>
+
+            <div class="imgBox">
+                <img src="img/li_thumb.png" class="springvermont"  >
+            </div>    
+        </div>
+        <ul class="thumb">
+            <li><img src="img/li_thumb.png" onclick="imgSlider('li_thumb.png');changeCircleColor('#94B868')"></li>
+            <li><img src="img/le_thumb.png" onclick="imgSlider('le_thumb.png');changeCircleColor('#F0DA8E')"></li>
+            <li><img src="img/mo_thumb.png" onclick="imgSlider('mo_thumb.png');changeCircleColor('#EAA659')"></li>
+            <li><img src="img/hwa_thumb.png" onclick="imgSlider('hwa_thumb.png');changeCircleColor('#d2bce2')"></li>
+        </ul>
+            <ul class="sci">
+                <li><a href="#" onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=' +encodeURIComponent(document.URL)+'&t='+encodeURIComponent(document.title), 'facebooksharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Facebook" rel="nofollow"><img src="img/facebook.png"></a></li>
+                <li><a href="#" onclick="javascript:window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20' +encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Twitter" rel="nofollow"><img src="img/twitter.png".png"></a></li>  
+                <li><a href="#" onclick="javascript:window.open('https://story.kakao.com/s/share?url=' +encodeURIComponent(document.URL), 'kakaostorysharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes, height=400,width=600');return false;" target="_blank" alt="Share on kakaostory" rel="nofollow"><img src="img/instagram.png"></a></li>
+            </ul>
+    </section>
+
+    <script type="text/javascript">
+        // 이미지 슬라이더 함수
+        function imgSlider(anything){
+            document.querySelector('.springvermont').src = anything;
+        }
+        // 원의 배경색 변경 함수
+        function changeCircleColor(color){
+            const circle = document.querySelector('.circle');
+            circle.style.background = color;
+        }
+    </script>
+</body>
+</html>

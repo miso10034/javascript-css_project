@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kakao login</title>
+    <!-- 카카오 JavaScript SDK 라이브러리를 로드 -->
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+</head>
+<body>
+    <!-- 카카오 계정 로그인 버튼 -->
+    <a href="#" onclick="kakaoLogin(); return false;">
+        <img src="https://www.gb.go.kr/Main/Images/ko/member/certi_kakao_login.png" alt="카카오계정 로그인" style="height: 50px;"/>
+    </a>
+
+     <!-- 사용자 정보를 보여주는 섹션 (초기에는 숨겨져 있음) -->
+    <div id="userInfo" style="display: none;">
+        <h2>사용자 정보</h2>
+        <div id="profile_image"></div>
+        <div id="profile_nickname"></div>
+        <div id="account_email"></div>
+        <div id="gender"></div>
+        <div id="birthday"></div>
+    </div>
+    
+    <script>
+        // 카카오 SDK 초기화 (API 키 설정)
+        window.Kakao.init('9fd5f6934c39ad63962db460404ce16f');
+
+        // 카카오 계정 로그인 함수
+        function kakaoLogin() {
+            window.Kakao.Auth.login({
+                // 요청할 사용자 정보 범위 설정
+                scope: 'profile_nickname, profile_image, account_email, gender, age_range, birthday',
+                success: function(authObj) {
+                    // 로그인 성공시 사용자 정보 표시
+                    showUserInfo(authObj);
+                },
+                fail: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+        // 사용자 정보를 표시하는 함수
+        function showUserInfo(authObj) {
+            Kakao.API.request({
+                // 사용자 정보 요청
+                url: '/v2/user/me',
+                success: function(response) {
+                    // 사용자 정보 추출
+                    const userInfo = response.kakao_account;
+                    // 정보를 HTML 요소에 삽입해 표시
+                    document.getElementById('profile_image').innerHTML = `<img src="${userInfo.profile.profile_image_url}" alt="프로필 사진">`;
+                    document.getElementById('profile_nickname').innerText = `닉네임: ${userInfo.profile.nickname}`;
+                    document.getElementById('account_email').innerText = `이메일: ${userInfo.email}`;
+                    document.getElementById('gender').innerText = `성별: ${userInfo.gender}`;
+                    document.getElementById('birthday').innerText = `생년월일: ${userInfo.birthday}`;
+                    // 사용자 정보 섹션을 표시
+                    document.getElementById('userInfo').style.display = 'block';
+                },
+                fail: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
